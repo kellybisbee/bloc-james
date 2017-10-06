@@ -30,6 +30,21 @@ var albumMarconi = {
     ]
 };
 
+// My Example Album
+var albumKelly = {
+    title: "Kelly's Greatest Hits: Vol 1",
+    artist: 'Kelly Bisbee',
+    label: 'Magic Albums',
+    year: '2017',
+    albumArtUrl: 'assets/images/album_covers/15.png',
+    songs: [
+        { title: 'Started here', duration: '2:30' },
+        { title: 'Tried to do this', duration: '3:09' },
+        { title: 'Fail, fail, and fail', duration: '2:02' },
+        { title: 'But now I am here', duration: '3:19' },
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength){
     var template =
       '<tr class="album-view-song-item">'
@@ -67,4 +82,14 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumKelly];
+
+    albumImage.addEventListener('click', function(event) {
+      var j = 0;
+      while (j < albums.length) {
+        return setCurrentAlbum(albums[j]);
+        j++;
+      }
+    });
 };
