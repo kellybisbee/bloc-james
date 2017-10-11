@@ -72,8 +72,13 @@ var findParentByClassName = function(element, targetClass) {
         currentParent = currentParent.parentElement;
     }
     return currentParent;
+  } else if (element.parentElement === null) {
+    console.log("No parent found");
+  } else if (currentParent.className !== targetClass) {
+    console.log("No parent found with that class name");
   }
-};
+}
+
 
 var getSongItem = function(element) {
     switch (element.className) {
