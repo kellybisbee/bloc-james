@@ -94,7 +94,7 @@ var updatePlayerBarSong = function() {
 
 var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
-    curentSongIndex++;
+    currentSongIndex++;
 
     if(currentSongIndex >= currentAlbum.songs.length) {
         currentSongIndex = 0;
