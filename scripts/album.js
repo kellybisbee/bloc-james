@@ -101,11 +101,54 @@ var updatePlayerBarSong = function() {
 
 var songTracker = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    var $previousButton = $('.main-controls .previous');
+    var $nextButton = $('.main-controls .next');
 
-    if 
-}
+    if ($nextButton.click) {
+        currentSongIndex++;
 
-var nextSong = function() {
+          if(currentSongIndex >= currentAlbum.songs.length) {
+              currentSongIndex = 0;
+          }
+
+          var lastSongNumber = currentlyPlayingSongNumber;
+
+          setSong(currentSongIndex + 1);
+          currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+
+          updatePlayerBarSong();
+
+          var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+          var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
+
+          $nextSongNumberCell.html(pauseButtonTemplate);
+          $lastSongNumberCell.html(lastSongNumber);
+
+        };
+
+    if ($previousButton.click) {
+        currentSongIndex--;
+
+          if(currentSongIndex < 0) {
+              currentSongIndex = currentAlbum.songs.length - 1;
+          }
+
+          setSong(currentSongIndex + 1);
+          currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+
+          updatePlayerBarSong();
+          $('.main-controls .play-pause').html(playerBarPauseButton);
+
+          var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+          var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
+
+          $previousSongNumberCell.html(pauseButtonTemplate);
+          $lastSongNumberCell.html(lastSongNumber);
+    };
+
+};
+
+/* var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     currentSongIndex++;
 
@@ -148,7 +191,7 @@ var previousSong = function() {
 
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
-};
+}; */
 
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
@@ -168,6 +211,6 @@ var $nextButton = $('.main-controls .next');
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-    $previousButton.click(previousSong);
-    $nextButton.click(nextSong);
+    $previousButton.click(songTracker);
+    $nextButton.click(songTracker);
 });
