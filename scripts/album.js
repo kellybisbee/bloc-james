@@ -99,6 +99,12 @@ var updatePlayerBarSong = function() {
     $('.main-controls .play-pause').html(playerBarPauseButton);
 };
 
+var songTracker = function() {
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+
+    if 
+}
+
 var nextSong = function() {
     var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
     currentSongIndex++;
