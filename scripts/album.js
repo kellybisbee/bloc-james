@@ -4,8 +4,9 @@ var setSong = function(songNumber) {
     }
 
     currentlyPlayingSongNumber = parseInt(songNumber);
-    currentSongFromAlbulm = currentAlbum.songs[songNumber -1];
+    currentSongFromAlbum = currentAlbum.songs[songNumber -1];
     currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
+
         formats: [ 'mp3' ],
         preload: true
     });
@@ -43,9 +44,10 @@ var createSongRow = function(songNumber, songName, songLength){
         }
 
         if (currentlyPlayingSongNumber !== songNumber) {
-            $(this).html(pauseButtonTemplate);
             setSong(songNumber);
             currentSoundFile.play();
+            $(this).html(pauseButtonTemplate);
+            currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
             updatePlayerBarSong();
         } else if (currentlyPlayingSongNumber === songNumber) {
             if (currentSoundFile.isPaused()) {
@@ -132,8 +134,8 @@ var nextSong = function() {
     var lastSongNumber = currentlyPlayingSongNumber;
 
     setSong(currentSongIndex + 1);
-    currentSoundFile.play();
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    currentSoundFile.play();
 
     updatePlayerBarSong();
 
@@ -155,8 +157,8 @@ var previousSong = function() {
     var lastSongNumber = currentlyPlayingSongNumber;
 
     setSong(currentSongIndex + 1);
-    currentSoundFile.play();
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    currentSoundFile.play();
 
     updatePlayerBarSong();
     $('.main-controls .play-pause').html(playerBarPauseButton);
