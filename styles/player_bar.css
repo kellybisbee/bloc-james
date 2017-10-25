@@ -121,7 +121,10 @@
     cursor: pointer;
     -webkit-transition: all 100ms ease-in-out;
         -moz-transition: all 100ms ease-in-out;
-            transition: all 100ms ease-in-out;
+            transition: width 100ms ease-in-out,
+                        height 100ms ease-in-out,
+                        margin-top 100ms ease-in-out,
+                        margin-left 100ms ease-in-out;
 }
 
 .seek-bar:hover .thumb {
@@ -153,7 +156,7 @@
         padding: 1rem;
         background-color: rgba(0,0,0,0.6);
     }
-    
+
     .player-bar .main-controls,
     .player-bar .currently-playing,
     .player-bar .volume {
